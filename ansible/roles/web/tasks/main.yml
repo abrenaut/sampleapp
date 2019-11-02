@@ -1,0 +1,4 @@
+---
+- include: install_docker.yml
+- include: run_app.yml
+- include: run_nginx.yml

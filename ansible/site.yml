@@ -1,0 +1,20 @@
+---
+# This playbook deploys the whole survey app
+
+- name: Deploy postgres
+  hosts: dbservers
+  become: yes
+  become_method: sudo
+  remote_user: "{{remoteuser}}"
+
+  roles:
+    - db
+
+- name: Configure and deploy the webservers and application code
+  hosts: webservers
+  become: yes
+  become_method: sudo
+  remote_user: "{{remoteuser}}"
+
+  roles:
+    - web

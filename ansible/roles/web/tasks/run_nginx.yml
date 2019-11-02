@@ -1,0 +1,25 @@
+---
+- name: Install nginx package
+  apt: 
+    update_cache: yes
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - nginx
+
+- name: copy the nginx config file 
+  template:
+    src: survey.cfg
+    dest: /etc/nginx/sites-available/survey.cfg
+
+- name: create symlink
+  file:
+    src: /etc/nginx/sites-available/survey.cfg
+    dest: /etc/nginx/sites-enabled/survey.cfg
+    state: link
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted

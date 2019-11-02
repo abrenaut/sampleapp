@@ -1,0 +1,33 @@
+---
+# These tasks install docker on a Ubuntu server
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Install docker packages
+  apt: 
+    update_cache: yes
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - python-pip
+    - python-pkg-resources
+    - docker-ce
+
+- name: Grant docker privileges to user
+  command: usermod -aG docker {{remoteuser}}
+
+- name: Install Docker Module for Python
+  pip:
+    name:
+      - setuptools
+      - docker
+      - requests>2.20.1

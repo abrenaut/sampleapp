@@ -1,0 +1,8 @@
+---
+# Variables listed here are applicable to all host groups
+
+remoteuser: ubuntu
+dbuser: survey
+dbname: survey
+dbpassword: changethispassword
+dbhost: 127.0.0.1

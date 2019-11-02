@@ -1,0 +1,5 @@
+---
+# The variables file used by the playbooks in the webservers group.
+
+dockerrepo: abrenaut/survey
+dockerimagetag: latest

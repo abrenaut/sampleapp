@@ -1,0 +1,18 @@
+---
+# These tasks start the app in a Docker container
+
+- name: Install and boot container
+  docker_container:
+    name: survey
+    image: "{{dockerrepo}}:{{dockerimagetag}}"
+    pull: yes
+    state: started
+    restart_policy: always
+    command: ["gunicorn", "-w", "4", "-k", "gevent", "--bind", "0.0.0.0:5000", "wsgi:app"]
+    ports: "5000:5000"
+    env:
+      SQLALCHEMY_DATABASE_URI: "postgres://{{dbuser}}:{{dbpassword}}@{{dbhost}}:5432/{{dbname}}"
+    network_mode: host
+
+- name: Run db migration in docker container
+  command: docker exec -t survey flask db upgrade

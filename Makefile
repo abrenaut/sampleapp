@@ -17,6 +17,9 @@ migrate: build ## Run database migrations.
 build: ## Build the docker container
 	docker build -t $(APP_NAME) .
 
+deploy: ## Deploy service using the Ansible playbook
+	ansible-playbook -i ansible/hosts ansible/site.yml -e "dockerimagetag=$(CURRENT_HASH)"
+
 release: build publish ## Docker release - build, tag and push the container
 	@echo "Released $(DOCKER_REPO)/$(APP_NAME):$(CURRENT_HASH)"
 
