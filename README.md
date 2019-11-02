@@ -11,7 +11,7 @@ Simple survey app
 ### Start the service and a postgres database
 
 ```
-docker-compose up
+make up
 ```
 
 ## Run tests
