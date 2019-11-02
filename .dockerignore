@@ -1,0 +1,7 @@
+Makefile
+Dockerfile
+README.md
+__pycache__
+.flaskenv
+.gitignore
+docker-compose.yml

@@ -2,6 +2,24 @@
 
 Simple survey app
 
+## Running locally
+
+### Requirements
+
+* [docker-compose](https://docs.docker.com/compose/)
+
+### Start the service and a postgres database
+
+```
+docker-compose up
+```
+
+## Run tests
+
+```
+make test
+```
+
 ## Example requests
 
 ### Create a survey
