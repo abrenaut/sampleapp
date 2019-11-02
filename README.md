@@ -20,6 +20,20 @@ make up
 make test
 ```
 
+## Deploy the application
+
+### Publish the Docker image to Dockerhub
+
+```
+make release
+```
+
+### Deploy the application
+
+```
+make deploy
+```
+
 ## Example requests
 
 ### Create a survey
